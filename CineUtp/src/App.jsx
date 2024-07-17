@@ -1,26 +1,33 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { Navbar } from './components/Navbar'
 import Principal from './components/Principal'
+import Presentation from './Presentation'
+
 
 function App() {
-
+  const [showPresentation, setShowPresentation] = useState(true);
+  const handleContinue = () => {
+    setShowPresentation(false);
+  };
 
   return (
-    <div className='w-full h-full bg-white'>
-      <nav>
-        <Navbar/>
-      </nav>
-
-      <Principal>  //No styling on Main File :-
-        <Principal/>
-      </Principal>
-      
-
+    <div className="w-full h-full bg-white">
+      {showPresentation ? (
+        <Presentation onContinue={handleContinue} />
+      ) : (
+        <>
+          <nav>
+            <Navbar />
+          </nav>
+          <main>
+            <Principal />
+          </main>
+        </>
+      )}
     </div>
-  )
-}
+  );
+};
+
 
 export default App

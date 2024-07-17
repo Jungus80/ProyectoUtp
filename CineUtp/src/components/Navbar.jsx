@@ -1,14 +1,16 @@
 import { useState } from "react";
 import {links, logImg} from "../assets/resources";
 import { Button } from "./Button";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = ()=>{
     let [open,SetOpen] = useState(false)
-    // shawow crea sombra
+    // navegacion
+    let navigate = useNavigate()
     return (
     <nav className="shadow-md w-full top-0 left-0 ">
         <div className="md:flex bg-grey-400 py-4 md:px-7  items-center justify-between">
-            <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins]">
+            <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins]" onClick={()=>navigate('/')} >
                 <span className="text-3xl text-indigo-600 mr-1 pt-2">
                 <img src={logImg} alt="" className=" w-16 h-16" />
                 </span>
@@ -27,7 +29,7 @@ export const Navbar = ()=>{
                    </li>  
                     ))
                 }
-                <Button>
+                <Button onClick={()=>navigate('/revisar')}>
                     Revisar Boletos 
                 </Button>
             </ul>
